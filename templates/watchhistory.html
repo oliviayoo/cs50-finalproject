@@ -1,0 +1,50 @@
+<!-- HTML for watch history page -->
+<!-- Written by Olivia Yoo and Nalani Dziama -->
+<!-- Last updated December 8 2020 -->
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Watch History
+{% endblock %}
+
+{% block main %}
+    <!-- Table with all movies in user's watch history --> 
+    <table class="table table2" id="myTable2">
+        <thead>
+            <tr>
+                <th>Movie Poster</th>
+                <th>
+                    Title 
+                    <!-- Arrows to sort table by titles alphabetically -->
+                    <img onclick="sortTable(1)" src="static/arrows.png" width="15" alt="sort arrow">
+                </th>
+                <th>Release Year</th>
+                <th>My Rating</th>
+                <th>My Review</th>
+                <th>Date Reviewed</th>
+                <th>MORE INFO</th>
+                <th>REMOVE</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data from users watch history, one movie per row --> 
+            {% for movie in movies %}
+            <tr>
+                <td><img src="{{ movie['image'] }}" width="60" height="89" alt="Movie poster"></td>
+                <td>{{ movie['title'] }}</td>
+                <td>{{ movie['description'] }}</td>
+                <td>{{ movie['rating'] }} / 10</td>
+                <td>{{ movie['review'] }}</td>
+                <td>{{ movie['timereviewed'] }}</td>
+                <td><form action="/info" method="post"><input name="movieid" type="hidden" value="{{ movie['movie_id'] }}"><input type=image src="static/info.png" alt="submit" width="30"></form></td>
+                <td><form action="/removehistory" method="post">
+                    <input name="movieid" type="hidden" value="{{ movie['movie_id'] }}">
+                    <input name="watchedtimes" type="hidden" value="{{ movie['watchedtimes'] }}">
+                    <input type=image src="static/trash.png" alt="submit" width="30">
+                    </form></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

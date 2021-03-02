@@ -1,0 +1,40 @@
+<!-- HTML for search results page -->
+<!-- Written by Olivia Yoo and Nalani Dziama -->
+<!-- Last updated December 8 2020 -->
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Search Results
+{% endblock %}
+
+{% block main %}
+    <h5>Search Results for "{{ query }}"</h5>
+    
+    <!-- Table with search results -->
+    <table class="table table2" id="myTable2">
+        <thead>
+            <tr>
+                <th>Movie Poster</th>
+                <th>
+                    Movie Title 
+                    <!-- Arrow to sort table alphabetically -->
+                    <img onclick="sortTable(1)" src="static/arrows.png" width="15" alt="sort arrow">
+                </th>
+                <th>MORE INFO</th>
+                <th>ADD TO LIST</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Iterate through search results, display each in a row in table -->
+            {% for result in results %}
+            <tr>
+                <td><img src="{{ result['image'] }}" width="119" height="177" alt="Movie poster"></td>
+                <td>{{ result['title'] }}</td>
+                <td><form action="/info" method="post"><input name="movieid" type="hidden" value="{{ result['id'] }}"><input type=image src="static/info.png" alt="submit" width="30"></form></td>
+                <td><form action="/add" method="post"><input name="movieid" type="hidden" value="{{ result['id'] }}"><input type=image src="static/add.png" alt="submit" width="30"></form></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

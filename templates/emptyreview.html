@@ -1,0 +1,32 @@
+<!-- HTML for review page when there are no movies to be reviewed -->
+<!-- Written by Olivia Yoo and Nalani Dziama -->
+<!-- Last updated December 8 2020 -->
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Review
+{% endblock %}
+
+{% block main %}
+    <p>You have no movies on your watchlist to review. </p>
+    
+    <p>Search a movie to get started, or get a random suggestion from Mr. Miyagi!</p>
+    
+    <!-- Button directs to search page --> 
+    <form action="/search" method="get">
+        <button class="button button1" type="submit">Search</button>
+    </form>
+    
+    <p></p>
+    
+    <!-- Button directs to generate random suggestion -->
+    <form action="/random" method="post">
+        <button class="button button1" type="submit">Random Suggestion</button>
+    </form>
+    
+    <!-- Mr. Miyagi cartoon-->
+    <img src="static/miyagi.jpg" alt="Mr. Miyagi" width="198" height="255">
+
+    
+{% endblock %}

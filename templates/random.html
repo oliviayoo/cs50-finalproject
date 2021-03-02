@@ -1,0 +1,22 @@
+<!-- HTML for random movie suggestion page -->
+<!-- Written by Olivia Yoo and Nalani Dziama -->
+<!-- Last updated December 8 2020 -->
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Random Suggestion
+{% endblock %}
+
+{% block main %}
+    <p>Click the button below to receive a random movie suggestion from Mr. Miyagi!</p>
+
+    <!-- Random generation form -->
+    <form action="/random" method="post">
+        <button class="button button1" type="submit">Generate Random Movie</button>
+    </form>
+    
+    <!-- Mr. Miyagi cartoon -->
+    <img src="/static/miyagi.jpg" alt="Mr. Miyagi" width="198" height="255">
+    
+{% endblock %}

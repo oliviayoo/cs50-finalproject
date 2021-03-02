@@ -1,0 +1,13 @@
+<!-- HTML for apology message with Mr. Miyagi graphic -->
+<!-- Written by Olivia Yoo and Nalani Dziama -->
+<!-- Last updated December 8 2020 -->
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Apology
+{% endblock %}
+
+{% block main %}
+    <img alt="{{ top }}" class="border" src="http://memegen.link/custom/{{ top | urlencode }}/{{ bottom | urlencode }}.jpg?alt=https://www.writeups.org/wp-content/uploads/Mister-Miyagi-Karate-Kid-headband.jpg" title="{{ top }}">
+{% endblock %}

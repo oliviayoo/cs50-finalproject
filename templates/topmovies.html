@@ -1,0 +1,40 @@
+<!-- HTML for top 250 movies page -->
+<!-- Written by Olivia Yoo and Nalani Dziama -->
+<!-- Last updated December 8 2020 -->
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Top 250 Movies
+{% endblock %}
+
+{% block main %}
+    <h5>Top 250 Movies on IMDb</h5>
+    
+    <!-- Table with movies -->
+    <table class="table table2">
+        <thead>
+            <tr>
+                <th>Ranking</th>
+                <th>Movie Poster</th>
+                <th>Movie Title</th>
+                <th>Release Year</th>
+                <th>MORE INFO</th>
+                <th>ADD TO LIST</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Iterate through each movie per row-->
+            {% for movie in topmovies %}
+            <tr>
+                <td>{{ movie['rank'] }}</td>
+                <td><img src="{{ movie['image'] }}" width="119" height="177" alt="Movie poster"></td>
+                <td>{{ movie['title'] }}</td>
+                <td>{{ movie['year'] }}</td>
+                <td><form action="/info" method="post"><input name="movieid" type="hidden" value="{{ movie['movie_id'] }}"><input type=image src="static/info.png" alt="submit" width="30"></form></td>
+                <td><form action="/add" method="post"><input name="movieid" type="hidden" value="{{ movie['movie_id'] }}"><input type=image src="static/add.png" alt="submit" width="30"></form></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

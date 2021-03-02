@@ -1,0 +1,59 @@
+<!-- HTML for random suggestion results page -->
+<!-- Written by Olivia Yoo and Nalani Dziama -->
+<!-- Last updated December 8 2020 -->
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Random Suggestion
+{% endblock %}
+
+{% block main %}
+    <h3>Mr. Miyagi recommends: </h3>
+    
+    <!-- Left third of the page -->
+    <sectiona>
+        <!-- Mr. Miyagi cartoon -->
+        <img src="/static/miyagi.jpg" alt="Mr. Miyagi" width="198" height="255">
+    </sectiona>
+    
+    <!-- Middle third of the page -->
+    <sectiona>
+        
+        <!-- Movie title and year-->
+        <h4><b>{{ movietitle }} ({{ movieyear }})</b></h4>
+        <p></p>
+        
+        <!-- Ranking of movie -->
+        <h5>Ranked #{{ movierank }} on IMDb</h5>
+        
+        <!-- Buttons -->
+        <div>
+            <!-- Button to redirect to more info -->
+            <form action="/info" method="post">
+                <input name="movieid" type="hidden" value="{{ movieid }}">
+                <button class="button button1" type="submit">More Info</button>
+            </form>
+            <p></p>
+            
+            <!-- Button to add movie to list -->
+            <form action="/add" method="post">
+                <input name="movieid" type="hidden" value="{{ movieid }}">
+                <button class="button button1" type="submit">Add to Watchlist</button>
+            </form>
+            <p></p>
+            
+            <!-- Button to generate another random movie -->
+            <form action="/random" method="post">
+                <button class="button button1" type="submit">Generate Another</button>
+            </form>
+        </div>
+    </sectiona>
+    
+    <!-- Right third of page -->
+    <sectiona>
+        <!-- Movie poster -->
+        <img src="{{ movieimage }}" width="172" height="255" alt="Movie poster"></td>
+    </sectiona>
+
+{% endblock %}

@@ -1,0 +1,64 @@
+<!-- HTML for movie information page -->
+<!-- Written by Olivia Yoo and Nalani Dziama -->
+<!-- Last updated December 9 2020 -->
+
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ movieinfo['title'] }} 
+{% endblock %}
+
+{% block main %}
+
+    <!-- Top section of page that contains movie poster and basic information about movie  --> 
+    <div class="group">
+        
+        <!-- Left third of page that contains movie poster --> 
+        <aside>
+            <img src="{{ movieinfo['image'] }}" width="238" height="354" alt="Movie poster">
+        </aside>
+        
+        <!-- Right two/thirds of page that have information about the movie -->
+        <section>
+            
+            <!-- Movie title -->
+            <h3 align="left">{{ movieinfo['title'] }}({{ movieinfo['year'] }})</h3>
+            <p></p>
+            
+            <!-- Actor names -->
+            <h5 align="left"><b>Starring: </b>{{ movieinfo['actors'] }}</h5>
+            <p></p>
+            
+            <!-- Duration  -->
+            <h5 align="left"><b>Runtime: </b>{{ movieinfo['length'] }}</h5>
+            <p></p>
+            
+            <!-- Ratings -->
+            <h5 align="left"><b>IMDb Rating: </b>{{ movieinfo['rating'] }} out of 10</h5>
+            <h5 align="left"><b>Number of Votes on IMDb: </b>{{ movieinfo['votes'] }}</h5>
+            <p></p>
+            
+            <!-- Div that aligns the buttons to the left -->
+            <div class="text-left">
+           
+                <!-- Button that redirects to movie trailer on YouTube -->
+                <button class="button button1" onclick="window.location.href='{{ movieinfo['trailer'] }}'">Watch Trailer</button>
+            `   <p></p>
+            
+                <!-- Button that adds movie to watchlist -->
+                <form action="/add" method="post">
+                    <input name="movieid" type="hidden" value="{{ movieinfo['id'] }}">
+                    <button class="button button1" type="submit">Add to Watchlist</button>
+                </form>
+            </div>
+        </section>
+    </div>
+    
+    <p></p>
+    
+    <!-- Section with Wikipedia summary in the middle of the page below the other sections -->
+    <div class="center">
+        <p align="left"><b>Plot: </b>{{ movieinfo['plot'] }}</p>
+    </div>
+    
+{% endblock %}

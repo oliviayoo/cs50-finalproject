@@ -1,0 +1,45 @@
+<!-- HTML for watchlist page -->
+<!-- Written by Olivia Yoo and Nalani Dziama -->
+<!-- Last updated December 8 2020 -->
+
+{% extends "layout.html" %}
+
+{% block title %}
+    My Watchlist
+{% endblock %}
+
+{% block main %}
+    <h4>My Watchlist</h4>
+    
+    <!-- Table of movies on user's watchlist -->
+    <table class="table table2" id="myTable2">
+        <thead>
+            <tr>
+                <th>Movie Poster</th>
+                <th>
+                    Movie Title 
+                    <!-- Arrows to sort table alphabetically by title -->
+                    <img onclick="sortTable(1)" src="static/arrows.png" width="15" alt="sort arrow">
+                </th>
+                <th>Release Year</th>
+                <th>MORE INFO</th>
+                <th>REVIEW MOVIE</th>
+                <th>REMOVE FROM LIST</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Data from users watch list, one movie per row --> 
+            {% for movie in watchlist %}
+            <tr>
+                <td><img src="{{ movie['image'] }}" width="119" height="177" alt="Movie poster"></td>
+                <td>{{ movie['title'] }}</td>
+                <td>{{ movie['description'] }}</td>
+                <td><form action="/info" method="post"><input name="movieid" type="hidden" value="{{ movie['movie_id'] }}"><input type=image src="static/info.png" alt="submit" width="30"></form></td>
+                <td><form action="/reviewspecific" method="post"><input name="movieid" type="hidden" value="{{ movie['movie_id'] }}"><input type=image src="static/review.png" alt="submit" width="30"></form></td>
+                <td><form action="/remove" method="post"><input name="movieid" type="hidden" value="{{ movie['movie_id'] }}"><input type=image src="static/trash.png" alt="submit" width="30"></form></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

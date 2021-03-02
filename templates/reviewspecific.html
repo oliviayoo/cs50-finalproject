@@ -1,0 +1,38 @@
+<!-- HTML for review specific movie page -->
+<!-- Written by Olivia Yoo and Nalani Dziama -->
+<!-- Last updated December 8 2020 -->
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Review
+{% endblock %}
+
+{% block main %}
+    <h4>Review {{ movietitle }}({{ movieyear }}):</h4>
+    <p></p>
+    
+    <!-- Review form -->
+    <form action="/review" method="post">
+        
+        <!-- Hidden input with movie title -->
+        <input name="movie" type="hidden" value="{{ movietitle }}">
+        
+        <!-- Rating -->
+        <div class="form-group">
+            <input autocomplete="off" class="form-control" min="0" max="10" name="rating" placeholder="Rating (1-10)" type="number" step="any">
+        </div>
+        
+        <!-- Review -->
+        <div class="form-group">
+            <input autocomplete="off" class="form-control" name="review" placeholder="Review" type="text">
+        </div>
+        
+        <!-- Submit button -->
+        <button class="button button1" type="submit">Review</button>
+    </form>
+    
+    <!-- Mr. Miyagi cartoon -->
+    <img src="/static/miyagi.jpg" alt="Mr. Miyagi" width="198" height="255">
+    
+{% endblock %}

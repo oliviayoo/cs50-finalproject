@@ -1,0 +1,22 @@
+<!-- HTML for search page -->
+<!-- Written by Olivia Yoo and Nalani Dziama -->
+<!-- Last updated December 8 2020 -->
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block main %}
+    <!-- Search form -->
+    <form action="/search" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="query" placeholder="Movie Title" type="text">
+        </div>
+        <button class="button button1" type="submit">Search</button>
+    </form>
+    
+    <!-- Mr. Miyagi cartoon -->
+    <img src="/static/miyagi.jpg" alt="Mr. Miyagi" width="198" height="255">
+{% endblock %}
